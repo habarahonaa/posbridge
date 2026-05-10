@@ -18,14 +18,14 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "POSBridge — print receipts and Brother QL labels from a web app on macOS",
+  title: "POSBridge — print Brother QL labels from a web app on macOS",
   description:
-    "A tiny native macOS menubar helper that exposes ESC/POS receipt printers and Brother QL label printers to a hosted web app over localhost HTTP. No SDK, no Tauri, no Brother b-PAC.",
+    "Tiny native macOS menubar helper that prints Brother QL labels with firmware-level template field-fill — and ESC/POS receipts on the side — straight from a hosted web app. No SDK, no Tauri, no Brother b-PAC.",
   metadataBase: new URL("https://posbridge.dev"),
   openGraph: {
     title: "POSBridge",
     description:
-      "Print receipts and Brother QL labels from a web app on macOS — without b-PAC, Tauri, or a print server.",
+      "Print Brother QL labels from a web app on macOS — without b-PAC, Tauri, or a print server.",
     type: "website",
   },
 };

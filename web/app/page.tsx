@@ -50,9 +50,11 @@ function Hero() {
       </h1>
 
       <p className="mt-7 max-w-2xl text-[15px] sm:text-base leading-relaxed text-neutral-400 animate-fade-up [animation-delay:160ms]">
-        POSBridge is a tiny native menubar helper that exposes ESC/POS receipt
-        printers and Brother QL label printers to a hosted web app over
-        localhost HTTP. No Tauri shell. No Brother SDK. No print server.{" "}
+        POSBridge is a tiny native menubar helper that prints{" "}
+        <span className="text-paper-100">Brother QL labels</span> with
+        firmware-level template field-fill — plus ESC/POS receipts and a
+        cash-drawer kick — straight from a hosted web app. No Tauri shell.
+        No Brother SDK. No print server.{" "}
         <span className="text-neutral-200">One small Swift binary.</span>
       </p>
 
@@ -205,7 +207,7 @@ function Quickstart() {
     <section id="quickstart" className="mt-24 sm:mt-32">
       <SectionLabel>Quick start</SectionLabel>
       <h2 className="mt-2 font-serif text-3xl sm:text-4xl tracking-tight text-paper-50">
-        Three steps to a <span className="italic">printed receipt.</span>
+        Three steps to a <span className="italic">printed label.</span>
       </h2>
 
       <div className="mt-10 space-y-10">
@@ -231,25 +233,36 @@ swift run`}
         </NumberedStep>
 
         <NumberedStep n="03" title="Print from your web app">
+          <p className="text-neutral-400 mb-3 text-sm leading-relaxed">
+            Once a template is uploaded into the QL&apos;s flash and registered
+            in <code>templates.json</code> (one-time setup,{" "}
+            <a
+              href={`${REPO}#setting-up-the-ql-label-workflow`}
+              className="text-paper-100 underline-offset-4 hover:underline"
+            >
+              full walkthrough in the README
+            </a>
+            ), printing is one fetch:
+          </p>
           <CodeBlock language="ts">
-{`await fetch("http://127.0.0.1:9999/print/receipt", {
+{`await fetch("http://127.0.0.1:9999/print/label", {
   method: "POST",
   headers: { "content-type": "application/json" },
   body: JSON.stringify({
-    storeName: "My Store",
-    saleId: "TEST-1",
-    occurredAt: new Date().toISOString(),
-    lines: [
-      { name: "Coffee", quantity: 1, unitPriceCents: 450, totalCents: 450 },
-    ],
-    subtotalCents: 450,
-    totalCents: 450,
-    currency: "USD",
-    paymentMethod: "Cash",
-    openDrawer: true,
+    template: "shipping",
+    fields: {
+      customerName: "Hollman Barahona",
+      addressLine1: "Managua, Nicaragua",
+      tracking: "CM-12345",
+    },
   }),
 });`}
           </CodeBlock>
+          <p className="mt-3 text-neutral-500 text-sm">
+            Receipts work the same way — <code>/print/receipt</code> with a
+            sale payload. Drawer kicks via <code>openDrawer: true</code> on
+            the receipt, or a direct <code>/drawer/kick</code>.
+          </p>
         </NumberedStep>
       </div>
     </section>

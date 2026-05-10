@@ -1,6 +1,6 @@
 # POSBridge
 
-A tiny native macOS menubar app that lets a browser-based POS print receipts and Brother QL labels — and pop a cash drawer — without giving up on hosted web tooling.
+A tiny native macOS menubar app that prints **Brother QL labels** with firmware-level template field-fill — plus ESC/POS receipts and a cash-drawer kick on the side — straight from a browser-based POS, without giving up on hosted web tooling.
 
 ```
    ┌───────────────────────┐        ┌──────────────────────────┐        ┌────────────┐
@@ -95,7 +95,28 @@ First launch: macOS will warn it's an unidentified developer. Right-click the bi
 
 A printer icon appears in the menubar. Click it to confirm both queues are detected — the icon turns green when they are.
 
-### 3. Smoke-test from your web app
+### 3. Print from your web app
+
+The primary use case — a Brother QL label with field substitution done by the printer's firmware:
+
+```ts
+await fetch("http://127.0.0.1:9999/print/label", {
+  method: "POST",
+  headers: { "content-type": "application/json" },
+  body: JSON.stringify({
+    template: "shipping",
+    fields: {
+      customerName: "Hollman Barahona",
+      addressLine1: "Managua, Nicaragua",
+      tracking: "CM-12345",
+    },
+  }),
+});
+```
+
+This requires a one-time template upload — see [**Setting up the QL label workflow**](#setting-up-the-ql-label-workflow) below for the visual P-touch Editor → Transfer Express dance. After that, every label is one fetch.
+
+The receipt path is the same shape and needs no setup beyond the CUPS queue:
 
 ```ts
 await fetch("http://127.0.0.1:9999/print/receipt", {
@@ -115,9 +136,7 @@ await fetch("http://127.0.0.1:9999/print/receipt", {
 });
 ```
 
-A receipt prints. If the cash drawer is daisy-chained off the receipt printer, it pops too.
-
-For labels, you'll need to author and upload a template first — see "Setting up the QL label workflow" below.
+The cash drawer pops via `openDrawer: true` on a receipt, or a direct `POST /drawer/kick`.
 
 ---
 
