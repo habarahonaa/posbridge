@@ -1,0 +1,24 @@
+# Swift / SwiftPM
+.build/
+.swiftpm/
+DerivedData/
+build/
+*.xcodeproj/xcuserdata
+*.xcworkspace/xcuserdata
+Package.resolved
+
+# macOS
+.DS_Store
+
+# Web (Next.js landing page in /web)
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/.env*.local
+web/tsconfig.tsbuildinfo
+web/next-env.d.ts
+
+# IDE
+.vscode/
+.idea/

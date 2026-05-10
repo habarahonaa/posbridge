@@ -1,0 +1,15 @@
+{
+  "port": 9999,
+  "receiptPrinter": {
+    "cupsQueueName": "Receipt",
+    "lineWidth": 48,
+    "characterCodepage": "PC858"
+  },
+  "labelPrinter": {
+    "cupsQueueName": "Label"
+  },
+  "store": {
+    "name": "My Store",
+    "footer": "Thank you!"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "shipping": {
+    "number": 1,
+    "description": "Shipping label — recipient name, address, tracking",
+    "requiredFields": ["customerName", "addressLine1", "tracking"]
+  },
+  "product": {
+    "number": 2,
+    "description": "Product price tag — SKU, name, price",
+    "requiredFields": ["sku", "name", "price"]
+  }
+}
