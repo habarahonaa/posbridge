@@ -2,6 +2,8 @@
 
 A tiny native macOS menubar app that prints **Brother QL labels** with firmware-level template field-fill — plus ESC/POS receipts and a cash-drawer kick on the side — straight from a browser-based POS, without giving up on hosted web tooling.
 
+![POSBridge — bytes to printed label](./assets/posbridge-demo.gif)
+
 ```
    ┌───────────────────────┐        ┌──────────────────────────┐        ┌────────────┐
    │  Your POS web app     │  HTTPS │  POSBridge.app           │  USB   │  Receipt + │

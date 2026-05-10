@@ -1,0 +1,23 @@
+{
+  "name": "posbridge-remotion",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render PosBridgeDemo out/posbridge-demo.mp4 --codec h264 --crf 18",
+    "render:gif": "remotion render PosBridgeDemo out/posbridge-demo.mp4 --codec h264 --crf 18 && npm run gif",
+    "gif": "ffmpeg -y -i out/posbridge-demo.mp4 -filter_complex \"[0:v] fps=24,scale=960:-1:flags=lanczos,split [a][b];[a] palettegen=max_colors=128 [p];[b][p] paletteuse=dither=bayer:bayer_scale=4\" out/posbridge-demo.gif"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.459",
+    "@remotion/google-fonts": "^4.0.459",
+    "@remotion/renderer": "^4.0.459",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "^4.0.459"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.1",
+    "typescript": "5.7.2"
+  }
+}
