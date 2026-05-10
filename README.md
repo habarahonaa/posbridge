@@ -321,3 +321,7 @@ Code style: stdlib over dependencies, comments explain *why* and not *what*, no 
 ## License
 
 MIT. See [`LICENSE`](./LICENSE).
+
+---
+
+Built by **[Hollman Barahona](https://habarahonaa.com)** while wiring print hardware into a real Next.js POS deployment. If POSBridge saves you a weekend of fighting with Brother's docs, that's the goal.

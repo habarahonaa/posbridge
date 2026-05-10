@@ -326,10 +326,24 @@ function Footer() {
   return (
     <footer className="mt-24 border-t border-neutral-900 pt-8 text-sm text-neutral-500">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <span>POSBridge · MIT</span>
+        <span>
+          POSBridge · MIT · built by{" "}
+          <a
+            href="https://habarahonaa.com"
+            className="text-neutral-300 hover:text-neutral-50"
+          >
+            Hollman Barahona
+          </a>
+        </span>
         <div className="flex gap-5">
           <a href={REPO} className="hover:text-neutral-200">GitHub</a>
           <a href={`${REPO}/issues`} className="hover:text-neutral-200">Issues</a>
+          <a
+            href="https://habarahonaa.com"
+            className="hover:text-neutral-200"
+          >
+            Portfolio
+          </a>
           <a
             href="https://download.brother.com/welcome/docp100307/cv_ql820_eng_ptemp_102.pdf"
             className="hover:text-neutral-200"
